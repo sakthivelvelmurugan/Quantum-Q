@@ -1,0 +1,6 @@
+{
+  "name": "Quantum-Q - Supreme Talent Intelligence Platform",
+  "description": "Multi-tenant enterprise talent intelligence platform for Infinite Solutions featuring executive owner governance, HR matching directory, dynamic employee profiles, and Atom AI advisor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
