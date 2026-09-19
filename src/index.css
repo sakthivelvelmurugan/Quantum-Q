@@ -1,0 +1,342 @@
+@import "tailwindcss";
+
+@theme {
+  --color-burgundy-950: #120609;
+  --color-burgundy-900: #1A080D;
+  --color-burgundy-850: #240B12;
+  --color-burgundy-800: #310D17;
+  --color-burgundy-700: #481321;
+  --color-burgundy-600: #641A2D;
+  --color-burgundy-500: #800F2F;
+  --color-burgundy-400: #9F1D3B;
+  --color-burgundy-300: #C43A58;
+  --color-burgundy-200: #E08A9D;
+  --color-burgundy-100: #F5CBD5;
+
+  --color-accent-burgundy: #8B1538;
+  --color-accent-rose: #C94B6A;
+  --color-accent-pink: #E58CA2;
+
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-danger: #F87171;
+  --color-neutral: #94A3B8;
+
+  --color-text-primary: #FFF5F7;
+  --color-text-secondary: #C9A8B0;
+  --color-text-muted: #795C65;
+
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.45), 0 1px 2px rgba(0,0,0,0.30);
+  --shadow-raised: 0 4px 18px rgba(0,0,0,0.50), 0 2px 5px rgba(0,0,0,0.30);
+  --shadow-modal: 0 20px 60px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.05);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+}
+
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES FOR DYNAMIC THEME (DARK & LIGHT / WHITE MODES)
+   Accessibility standard: WCAG AA (>= 4.5:1 text contrast) & AAA (>= 7:1)
+   ========================================================================== */
+
+:root, [data-theme="dark"], .dark {
+  --color-burgundy-950: #120609;
+  --color-burgundy-900: #1A080D;
+  --color-burgundy-850: #240B12;
+  --color-burgundy-800: #310D17;
+  --color-burgundy-700: #481321;
+  --color-burgundy-600: #641A2D;
+  --color-burgundy-500: #800F2F;
+  --color-burgundy-400: #9F1D3B;
+  --color-burgundy-300: #C43A58;
+  --color-burgundy-200: #E08A9D;
+  --color-burgundy-100: #F5CBD5;
+
+  --color-accent-burgundy: #8B1538;
+  --color-accent-rose: #C94B6A;
+  --color-accent-pink: #E58CA2;
+
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-danger: #F87171;
+  --color-neutral: #94A3B8;
+
+  --color-text-primary: #FFF5F7;
+  --color-text-secondary: #C9A8B0;
+  --color-text-muted: #795C65;
+
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.45), 0 1px 2px rgba(0,0,0,0.30);
+  --shadow-raised: 0 4px 18px rgba(0,0,0,0.50), 0 2px 5px rgba(0,0,0,0.30);
+  --shadow-modal: 0 20px 60px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.05);
+
+  --scrollbar-bg: #1A080D;
+  --scrollbar-thumb: #481321;
+  --scrollbar-thumb-hover: #641A2D;
+}
+
+[data-theme="light"], .light {
+  --color-burgundy-950: #FAF4F6; /* Soft porcelain canvas */
+  --color-burgundy-900: #FFFFFF; /* Crisp white main surface */
+  --color-burgundy-850: #F7EFF2; /* Subtle tinted sidebar surface */
+  --color-burgundy-800: #FFFFFF; /* Clean white card surface */
+  --color-burgundy-700: #F0E2E7; /* Elevated surface / active selection */
+  --color-burgundy-600: #E8CCD4; /* Crisp light wine border */
+  --color-burgundy-500: #800F2F; /* High-contrast signature burgundy CTA (7.5:1 on white) */
+  --color-burgundy-400: #640A23; /* Darker burgundy hover */
+  --color-burgundy-300: #9F1D3B; /* Secondary accent */
+  --color-burgundy-200: #7A0B2C; /* High-contrast wine text */
+  --color-burgundy-100: #52061A; /* Deepest wine text */
+
+  --color-accent-burgundy: #800F2F;
+  --color-accent-rose: #9F1D3B;
+  --color-accent-pink: #8B1538;
+
+  /* Accessible semantic colors on light background */
+  --color-success: #047857; /* Emerald green (>4.6:1 contrast) */
+  --color-warning: #B45309; /* Deep amber (>4.8:1 contrast) */
+  --color-danger: #B91C1C;  /* Ruby red (>5.0:1 contrast) */
+  --color-neutral: #64748B;
+
+  /* High-contrast accessible text colors on light background */
+  --color-text-primary: #1E080E; /* Espresso black-wine (>15:1 contrast, WCAG AAA) */
+  --color-text-secondary: #562B37; /* Dark wine text (>7.4:1 contrast, WCAG AAA) */
+  --color-text-muted: #704854; /* Readable muted text (>4.8:1 contrast, WCAG AA) */
+
+  --shadow-card: 0 1px 3px rgba(128, 15, 47, 0.08), 0 2px 6px rgba(0,0,0,0.03);
+  --shadow-raised: 0 4px 16px rgba(128, 15, 47, 0.10), 0 2px 5px rgba(0,0,0,0.04);
+  --shadow-modal: 0 20px 60px rgba(128, 15, 47, 0.18), 0 0 0 1px rgba(232, 204, 212, 0.8);
+
+  --scrollbar-bg: #FAF4F6;
+  --scrollbar-thumb: #E8CCD4;
+  --scrollbar-thumb-hover: #C43A58;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--color-burgundy-900);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #800F2F;
+    outline-offset: 2px;
+  }
+}
+
+/* ==========================================================================
+   LIGHT / WHITE MODE ACCESSIBILITY OVERRIDES
+   Ensures all existing components render with accessible, high-contrast
+   surfaces, borders, and typography without breaking dark mode.
+   ========================================================================== */
+
+.light {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Backgrounds in White Mode */
+.light .bg-\[\#120609\],
+.light.bg-\[\#120609\],
+[data-theme="light"] .bg-\[\#120609\],
+[data-theme="light"].bg-\[\#120609\] {
+  background-color: #FAF4F6 !important;
+}
+
+.light .bg-\[\#1A080D\],
+.light.bg-\[\#1A080D\],
+[data-theme="light"] .bg-\[\#1A080D\],
+[data-theme="light"].bg-\[\#1A080D\] {
+  background-color: #FFFFFF !important;
+}
+
+.light .bg-\[\#1A080D\]\/80,
+.light .bg-\[\#1A080D\]\/60,
+.light .bg-\[\#1A080D\]\/50,
+.light .bg-\[\#1A080D\]\/40,
+[data-theme="light"] .bg-\[\#1A080D\]\/80,
+[data-theme="light"] .bg-\[\#1A080D\]\/60,
+[data-theme="light"] .bg-\[\#1A080D\]\/50,
+[data-theme="light"] .bg-\[\#1A080D\]\/40 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.light .bg-\[\#240B12\],
+.light.bg-\[\#240B12\],
+[data-theme="light"] .bg-\[\#240B12\],
+[data-theme="light"].bg-\[\#240B12\] {
+  background-color: #F7EFF2 !important;
+}
+
+.light .bg-\[\#250A12\],
+.light.bg-\[\#250A12\],
+[data-theme="light"] .bg-\[\#250A12\],
+[data-theme="light"].bg-\[\#250A12\] {
+  background-color: #F5EAEF !important;
+}
+
+.light .bg-\[\#310D17\],
+.light.bg-\[\#310D17\],
+[data-theme="light"] .bg-\[\#310D17\],
+[data-theme="light"].bg-\[\#310D17\] {
+  background-color: #FFFFFF !important;
+}
+
+.light .bg-\[\#310D17\]\/50,
+[data-theme="light"] .bg-\[\#310D17\]\/50 {
+  background-color: #F9F1F4 !important;
+}
+
+.light .bg-\[\#481321\],
+.light.bg-\[\#481321\],
+[data-theme="light"] .bg-\[\#481321\],
+[data-theme="light"].bg-\[\#481321\] {
+  background-color: #F0E2E7 !important;
+}
+
+/* Borders in White Mode */
+.light .border-\[\#641A2D\],
+.light.border-\[\#641A2D\],
+[data-theme="light"] .border-\[\#641A2D\],
+[data-theme="light"].border-\[\#641A2D\] {
+  border-color: #E8CCD4 !important;
+}
+
+.light .border-\[\#120609\],
+[data-theme="light"] .border-\[\#120609\] {
+  border-color: #FAF4F6 !important;
+}
+
+.light .divide-\[\#641A2D\] > :not([hidden]) ~ :not([hidden]),
+[data-theme="light"] .divide-\[\#641A2D\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #E8CCD4 !important;
+}
+
+/* Typography in White Mode (Accessible Contrast) */
+.light .text-\[\#FFF5F7\],
+[data-theme="light"] .text-\[\#FFF5F7\] {
+  color: #1E080E !important;
+}
+
+.light .text-\[\#C9A8B0\],
+[data-theme="light"] .text-\[\#C9A8B0\] {
+  color: #562B37 !important;
+}
+
+.light .text-\[\#795C65\],
+[data-theme="light"] .text-\[\#795C65\] {
+  color: #704854 !important;
+}
+
+.light .text-\[\#E08A9D\],
+[data-theme="light"] .text-\[\#E08A9D\] {
+  color: #7A0B2C !important;
+}
+
+.light .text-\[\#E58CA2\],
+[data-theme="light"] .text-\[\#E58CA2\] {
+  color: #8F1235 !important;
+}
+
+.light .text-\[\#C43A58\],
+[data-theme="light"] .text-\[\#C43A58\] {
+  color: #800F2F !important;
+}
+
+.light .placeholder-\[\#795C65\]::placeholder,
+[data-theme="light"] .placeholder-\[\#795C65\]::placeholder {
+  color: #93717B !important;
+}
+
+/* Semantic Overrides in White Mode */
+.light .text-\[\#34D399\],
+[data-theme="light"] .text-\[\#34D399\] {
+  color: #047857 !important;
+}
+
+.light .text-\[\#FBBF24\],
+[data-theme="light"] .text-\[\#FBBF24\] {
+  color: #92400E !important;
+}
+
+.light .text-\[\#F87171\],
+[data-theme="light"] .text-\[\#F87171\] {
+  color: #B91C1C !important;
+}
+
+.light .bg-\[\#34D399\]\/15,
+[data-theme="light"] .bg-\[\#34D399\]\/15 {
+  background-color: #ECFDF5 !important;
+}
+
+.light .bg-\[\#FBBF24\]\/15,
+[data-theme="light"] .bg-\[\#FBBF24\]\/15 {
+  background-color: #FFFBEB !important;
+}
+
+.light .bg-\[\#F87171\]\/15,
+[data-theme="light"] .bg-\[\#F87171\]\/15 {
+  background-color: #FEF2F2 !important;
+}
+
+/* Hover States in White Mode */
+.light .hover\:bg-\[\#310D17\]:hover,
+[data-theme="light"] .hover\:bg-\[\#310D17\]:hover {
+  background-color: #F7EFF2 !important;
+}
+
+.light .hover\:bg-\[\#481321\]:hover,
+[data-theme="light"] .hover\:bg-\[\#481321\]:hover {
+  background-color: #F0E2E7 !important;
+}
+
+.light .hover\:text-\[\#FFF5F7\]:hover,
+[data-theme="light"] .hover\:text-\[\#FFF5F7\]:hover {
+  color: #1E080E !important;
+}
+
+.light .group:hover .group-hover\:text-\[\#FFF5F7\],
+[data-theme="light"] .group:hover .group-hover\:text-\[\#FFF5F7\] {
+  color: #1E080E !important;
+}
+
+.light .group:hover .group-hover\:bg-\[\#481321\],
+[data-theme="light"] .group:hover .group-hover\:bg-\[\#481321\] {
+  background-color: #F0E2E7 !important;
+}
+
+/* Rings in White Mode */
+.light .ring-\[\#120609\],
+.light .ring-\[\#1A080D\],
+[data-theme="light"] .ring-\[\#120609\],
+[data-theme="light"] .ring-\[\#1A080D\] {
+  --tw-ring-color: #FFFFFF !important;
+}
+
+/* Custom Apple-inspired Burgundy scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg, #1A080D);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb, #481321);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover, #641A2D);
+}
